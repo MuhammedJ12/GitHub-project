@@ -19,10 +19,13 @@
 #OUR PROJECT
 
 from pygame import *
+from pygame.sprite import Group
 import sys
 from random import shuffle, randrange, choice
 
 from settings import Settings
+from ship import Ship
+import game_functions as gf
 
 def run_game():
 	#Initialize game and create a screen object.
@@ -31,19 +34,33 @@ def run_game():
 	screen = pygame.display.set_mode((1200, 800))
 	pygame.display.set_caption("Invasion Nation")
 
+#Make a ship. 
+ship = Ship(ai_settings, screen)
+# Make a group to store bullets in.
+bullets = Group()
 #background color is green
 bg_color = (0, 255, 0)
 
 #Main loop for the game.
 while True:
-		
+	gf.check_events(ai_settings, screen, ship, bullets)
+	ship.update()
+	bullets.update()
+	gf.update_screen(ai_settings, screen, ship, bullets)
+
+def check_events(ship):
 #keyboard and mouse events.
 	for event in pygame.event.get():
 	if event.type == pygame.QUIT:
 	sys.exit()
 
+elif event.type == pygame.KEYDOWN:
+	if event.key == pygame.K_RIGHT:
+		#move to the right
+		ship.rect.centerx += 1
 #redraw screen through each pass of the loop
 screen.fill(bg_color)
+ship.blitme()
 #Make the most recently drawn screen visible.
 pygame.display.flip()
 
