@@ -1,4 +1,5 @@
-Class Settings():
+
+class Settings():
     """A class to store all settings"""
 
     def __init__(self):

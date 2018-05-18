@@ -1,4 +1,4 @@
-#I plan to create a modified version of pacman for my project. I was looking at templates but I have not chosen one to modify. 
+#Orignal plan was to create a modified version of pacman for my project. I was looking at templates but I have not chosen one to modify. 
 #Project Proposal
 #SPACE INVADERS
 #Find a template that we can edit the:
@@ -10,10 +10,11 @@
 #we found a template: https://github.com/leerob/Space_Invaders
 #we need to find out what methods we want to use that we previously know and incorporate the template we found into our own version.
 # we are gonna use what we found from python crasdh course
+# we did not end up using the github code as resource.
 
-# Space Invaders
-# We took code from Mr.Lee. His link is above in line 10.
-# We are now taking blocks of code that we want to replace with our own. 
+#Oliver worked on the commenting, meeting with Mr.Cozort, images, and some of the classes.
+#Armand did most of the coding and organizing the code.
+#our resource is python crash course
 
 
 #OUR PROJECT
@@ -30,16 +31,13 @@ import game_functions as gf
 
 def run_game():
     # Init pygame, settings and create screen object
-    pygame.init();
-
+    pygame.init()
     # loading settings variables from imported class
     ai_settings = Settings()
-
     # the screen object is called a surface which displays a game element
     # this surface will be redrawn every pass through the loop for animation
-    screen = pygame.display.set_mode(
-        (ai_settings.screen_width, ai_settings.screen_height))
-    pygame.display.set_caption("Space Nation")
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
+    pygame.display.set_caption("Alien Invasion")
 
     # make the play button
     play_button = Button(ai_settings, screen, "Play")
